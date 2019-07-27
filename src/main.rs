@@ -3,16 +3,16 @@ use pest::Parser as _;
 
 #[derive(Parser)]
 #[grammar_inline = r#"
-    number = @{ "x" }
+    x = @{ "x" }
 "#]
 struct Parser;
 
 fn main() {
-    let mut pairs = Parser::parse(Rule::number, "x").unwrap();
-    let number = pairs.next().unwrap();
-    dbg!(&number);
+    let mut pairs = Parser::parse(Rule::x, "x").unwrap();
+    let x = pairs.next().unwrap();
+    dbg!(&x);
 
-    let empty = number.into_inner();
+    let empty = x.into_inner();
     dbg!(&empty);
 
     empty.as_str();
