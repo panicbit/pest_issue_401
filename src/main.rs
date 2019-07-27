@@ -3,12 +3,12 @@ use pest::Parser as _;
 
 #[derive(Parser)]
 #[grammar_inline = r#"
-    number = @{ ASCII_DIGIT+ }
+    number = @{ "x" }
 "#]
 struct Parser;
 
 fn main() {
-    let mut pairs = Parser::parse(Rule::number, "123").unwrap();
+    let mut pairs = Parser::parse(Rule::number, "x").unwrap();
     let number = pairs.next().unwrap();
     dbg!(&number);
 
